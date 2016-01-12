@@ -1,0 +1,44 @@
+/*
+Month names
+
+Write a simple module similar to the weekDay module that can convert month numbers (zero-based, as in the Date type) to names and can convert names back to numbers. Give it its own namespace since it will need an internal array of month names, and use plain JavaScript, without any module loader system.
+*/
+Solution 1:
+
+var month = function(){
+	var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  	function numberToName(arg){
+    	return months[arg];
+    }
+  	function nameToNumber(arg){
+    	return months.indexOf(arg);
+    }
+  	return { name: numberToName, number: nameToNumber };
+}();
+
+console.log(month);
+
+console.log(month.name(2));
+// → March
+console.log(month.number("November"));
+// → 10
+
+Solution 2:
+
+// Your code here.
+(function(exports){
+	var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  	exports.name = function(arg){
+    	return months[arg];
+    }
+  	exports.number = function(arg){
+    	return months.indexOf(arg);
+    }
+  	
+})(this.month = {});
+
+
+console.log(month.name(2));
+// → March
+console.log(month.number("November"));
+// → 10
