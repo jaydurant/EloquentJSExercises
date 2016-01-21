@@ -16,8 +16,7 @@ Adjust runGame to implement lives. Have the player start with three.
 <script>
   // The old runGame function. Modify it...
   function runGame(plans, Display) {
-    var lives = 3;
-    function startLevel(n) {
+    function startLevel(n,lives) {
       runLevel(new Level(plans[n]), Display, function(status) {
         if(!lives)
           startLevel(0);
@@ -31,7 +30,7 @@ Adjust runGame to implement lives. Have the player start with three.
           console.log("You win!");
       });
     }
-    startLevel(0);
+    startLevel(0,3);
   }
   runGame(GAME_LEVELS, DOMDisplay);
 </script>
